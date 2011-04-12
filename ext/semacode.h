@@ -19,11 +19,11 @@ typedef struct semacode_t {
 #endif
 
 #ifndef StringValuePtr
-#define StringValuePtr(s) RSTRING(RB_STRING_VALUE(s))->ptr
+#define StringValuePtr(s) RSTRING_LEN(RB_STRING_VALUE(s))
 #endif
 
 #ifndef StringValueLen
-#define StringValueLen(s) RSTRING(RB_STRING_VALUE(s))->len
+#define StringValueLen(s) RSTRING_LEN(RB_STRING_VALUE(s))
 #endif
 
 #endif
