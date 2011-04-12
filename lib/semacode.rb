@@ -1,0 +1,1 @@
+require 'semacode_native'

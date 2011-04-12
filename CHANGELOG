@@ -1,0 +1,40 @@
+CHANGELOG
+
+  2007-03-02  guido
+  
+    * Initial encoder wrapping for Ruby API
+    
+    * Packaged as a gem
+  
+    
+  2007-03-03  guido
+  
+    * Separated native extension into its own namespace
+    
+    * Trying to make a correct gem still
+    
+    
+  2007-03-04  guido
+  
+    * Exposed the encoding list used to create the semacode
+    
+    * Use Ruby allocation functions instead of malloc. 
+    
+    * Fixes compiler errors with Fink not finding malloc.h
+    
+    * Given up on making the gem do auto-require
+    
+    * Fixes a memory leak where the encoding list wasn't being freed.
+    
+  
+  2007-03-04  guido
+  
+    * Free up internal memory allocated before we throw an exception
+    
+    * Throw ArgError and RangeError exceptions rather than Runtime exceptions
+    
+    * Don't return an inconsistent semacode when presented with overlong input
+    
+    * Don't fail quietly either, throw an exception
+    
+    * Very conservatively use a far smaller maximum value for input length than the header file suggests
