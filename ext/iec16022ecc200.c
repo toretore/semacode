@@ -778,13 +778,12 @@ encmake (int l, unsigned char *s, int *lenp, char exact)
    return encoding;
 }
 
-void iec16022init(int *Wptr, int *Hptr, const char *barcode)
+void iec16022init(int *Wptr, int *Hptr, int barcode_length)
 {
-	if(Wptr == NULL || Hptr == NULL || barcode == NULL) return;
+	if(Wptr == NULL || Hptr == NULL) return;
 	
-	int barcodelen = strlen(barcode) + 1;
 	struct ecc200matrix_s *matrix;
-	for (matrix = ecc200matrix; matrix->bytes < barcodelen; matrix++);
+	for (matrix = ecc200matrix; matrix->bytes <= barcode_length; matrix++);
 	*Wptr = matrix->W;
 	*Hptr = matrix->H;	
 }

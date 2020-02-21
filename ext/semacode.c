@@ -58,7 +58,7 @@ encode_string(semacode_t *semacode, int message_length, char *message)
   message_length++;
   
   // choose the best grid that will hold our message
-  iec16022init(&semacode->width, &semacode->height, message);
+  iec16022init(&semacode->width, &semacode->height, message_length);
   
   // encode the actual data
   semacode->data = (char *) iec16022ecc200(
