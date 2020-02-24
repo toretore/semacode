@@ -25,14 +25,9 @@ structure is consulted for any operations, such as to get the
 semacode dimensions. It deallocates any previous data before 
 generating a new encoding.
 
-Due to a bug in the underlying encoder, we do two things
-
- * append a space character before encoding, to get around
-   an off by one error lurking in the C code
-   
- * manually select the best barcode dimensions, to avoid
-   an encoder bug where sometimes no suitable encoding would
-   be found
+Due to a bug in the underlying encoder, we manually select the best barcode
+dimensions to avoid an encoder bug where sometimes no suitable encoding
+would be found
 
 */
 semacode_t* 
