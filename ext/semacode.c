@@ -53,10 +53,6 @@ encode_string(semacode_t *semacode, int message_length, char *message)
         
   bzero(semacode, sizeof(semacode_t));
   
-  // work around encoding bug by appending an extra character.
-  strcat(message, " ");
-  message_length++;
-  
   // choose the best grid that will hold our message
   iec16022init(&semacode->width, &semacode->height, message_length);
   
