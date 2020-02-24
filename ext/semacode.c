@@ -25,14 +25,9 @@ structure is consulted for any operations, such as to get the
 semacode dimensions. It deallocates any previous data before 
 generating a new encoding.
 
-Due to a bug in the underlying encoder, we do two things
-
- * append a space character before encoding, to get around
-   an off by one error lurking in the C code
-   
- * manually select the best barcode dimensions, to avoid
-   an encoder bug where sometimes no suitable encoding would
-   be found
+Due to a bug in the underlying encoder, we manually select the best barcode
+dimensions to avoid an encoder bug where sometimes no suitable encoding
+would be found
 
 */
 semacode_t* 
@@ -53,12 +48,8 @@ encode_string(semacode_t *semacode, int message_length, char *message)
         
   bzero(semacode, sizeof(semacode_t));
   
-  // work around encoding bug by appending an extra character.
-  strcat(message, " ");
-  message_length++;
-  
   // choose the best grid that will hold our message
-  iec16022init(&semacode->width, &semacode->height, message);
+  iec16022init(&semacode->width, &semacode->height, message_length);
   
   // encode the actual data
   semacode->data = (char *) iec16022ecc200(
